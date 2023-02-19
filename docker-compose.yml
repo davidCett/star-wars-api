@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  star_wars_db:
+    container_name: star_wars_db_container
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345Aa!
+    ports:
+      - 5432:5432
+    volumes: 
+          - ./db-schema/star-wars-db.sql:/docker-entrypoint-initdb.d/star-wars-db.sql
+
