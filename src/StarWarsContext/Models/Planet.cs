@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace StarWarsContext.Models;
+﻿namespace StarWarsContext.Models;
 
 public partial class Planet
 {

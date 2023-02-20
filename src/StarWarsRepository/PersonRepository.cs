@@ -1,21 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
 using StarWarsContext.Models;
+using StarWarsRepository.Dto;
+using StarWarsRepository.Repository;
 
 namespace StarWarsRepository;
 
-public class PersonRepository : IPersonRepository
+public class PersonRepository : DtoRepository<Person, PersonDto>, IPersonRepository
 {
-    private readonly StarWarsContext.Models.StarWarsContext _context;
-    private readonly DbSet<Person> _persons;
-
-    public PersonRepository(StarWarsContext.Models.StarWarsContext context)
+    public PersonRepository(IRepository<Person> context, IMapper mapper) : base(context, mapper)
     {
-        _context = context;
-        _persons = _context.Set<Person>();
-    }
 
-    public async Task<IEnumerable<Person>> GetAllAsync()
-    {
-        return await _persons.ToListAsync();
     }
 }
