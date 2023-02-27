@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StarWarsContext.Models;
 using StarWarsRepository;
 using StarWarsRepository.Dto;
 
@@ -18,15 +17,15 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet()]
-    public async Task<IEnumerable<PersonDto>> Get()
+    public async Task<IActionResult> Get()
     {
-        return await _repository.GetAllAsync();
+        return Ok(await _repository.GetAllAsync());
     }
 
     [HttpGet("{id}")]
-    public string Get(int id)
+    public async Task<PersonDto> Get(int id)
     {
-        return "value";
+        return await _repository.GetByIdAsync(id);
     }
 
     [HttpPost]

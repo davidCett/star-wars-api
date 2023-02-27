@@ -1,6 +1,4 @@
-﻿using StarWarsContext.Models;
-
-namespace StarWarsRepository.Dto;
+﻿namespace StarWarsRepository.Dto;
 
 public class PersonDto
 {

@@ -13,7 +13,9 @@ builder.Services.AddDbContext<StarWarsContext.Models.StarWarsContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 builder.Services.AddTransient<IPersonRepository, PersonRepository>();
 builder.Services.AddTransient<IRepository<Person>, Repository<Person>>();
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddTransient<IPlanetRepository, PlanetRepository>();
+builder.Services.AddTransient<IRepository<Planet>, Repository<Planet>>();
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 var app = builder.Build();
 

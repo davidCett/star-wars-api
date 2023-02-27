@@ -15,6 +15,9 @@ public class DtoRepository<T, D> : IDtoRepository<T,D>
     }
 
     public async Task<IEnumerable<D>> GetAllAsync()
-        => _mapper.Map<IEnumerable<D>>(await _repo.GetAllAsync());
+        => _mapper.Map<List<D>>(await _repo.GetAllAsync());
+
+    public async Task<D> GetByIdAsync(int id)
+        => _mapper.Map<D>(await _repo.GetByIdAsync(id));
 
 }
